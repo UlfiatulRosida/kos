@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -27,29 +26,13 @@ class LoginPage extends StatelessWidget {
                   border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 8),
               ElevatedButton(
-                onPressed: () async {
-                  final email = 'emailController.text';
-                  final password = 'passwordController.text';
-
-                  final response =
-                      await Supabase.instance.client.auth.signInWithPassword(
-                    email: email,
-                    password: password,
-                  );
-
-                  if (response.user == null) {
-                    Navigator.pushReplacementNamed(context, '/home');
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Login failed')),
-                    );
-                  }
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home');
                 },
                 child: const Text('Login'),
               ),
-              const SizedBox(height: 8),
               TextButton(
                 onPressed: () {},
                 child: const Text('Belum punya akun? Register'),

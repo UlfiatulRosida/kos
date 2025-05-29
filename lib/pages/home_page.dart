@@ -17,52 +17,42 @@ class _HomePageState extends State<HomePage> {
     fetchDataKos();
   }
 
-  Future<void> fetchDataKos() async {
-    final response =
-        await Supabase.instance.client.from('DataKos').select().execute();
-
-    if (response.error == null && response.data != null) {
-      print('Data fetched: ${response.data}');
-      setState(() {
-        kosList = List<Map<String, dynamic>>.from(response.data);
-      });
-    } else {
-      // Handle error
-      print('Error fetching data: ${response.error?.message}');
-    }
+  Future fetchDataKos() async {
+    final response = await Supabase.instance.client.from('Kos').select();
+    return (response as List)
+        .map((item) => Map<String, dynamic>.from(item))
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Daftar Kos Anda')),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/add');
-        },
-        child: const Icon(Icons.add),
-      ),
-      body: ListView.builder(
-          padding: const EdgeInsets.all(8),
-          itemCount: kosList.length, // contoh dummy 3 data
-          itemBuilder: (context, index) {
-            final kos = kosList[index];
-            return Card(
-              child: ListTile(
-                leading: Container(
-                  width: 50,
-                  height: 50,
-                  color: Colors.grey.shade300,
+        appBar: AppBar(title: const Text('Daftar Kos Anda')),
+        body: ListView.builder(
+            padding: const EdgeInsets.all(8),
+            itemCount: kosList.length, // contoh dummy 3 data
+            itemBuilder: (context, index) {
+              return Card(
+                child: ListTile(
+                  leading: Container(
+                    width: 50,
+                    height: 50,
+                    color: Colors.grey.shade300,
+                  ),
+                  title: const Text('Kos Contoh'),
+                  subtitle: const Text('Alamat Kos - 8 kamar tersedia'),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/detail');
+                  },
                 ),
-                title: const Text('Kos Contoh'),
-                subtitle: const Text('Alamat Kos - 8 kamar tersedia'),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () {
-                  Navigator.pushNamed(context, '/detail');
-                },
-              ),
-            );
-          }),
-    );
+              );
+            }),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/add', arguments: kosList);
+          },
+          child: const Icon(Icons.add),
+        ));
   }
 }

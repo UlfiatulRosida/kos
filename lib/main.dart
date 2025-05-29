@@ -6,11 +6,11 @@ import 'package:kos/pages/detail_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 const String supabaseKey =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhic2FzcXV5eHpldmNkcW1oeGZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2NzU3MjcsImV4cCI6MjA2MTI1MTcyN30.fDSLwsn0G2jUb82HhTEwsxYdng_3cDsdR7QxtRNPCOg';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2d21jbWhnempnemR4Ynl6aWx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyMjAwMTQsImV4cCI6MjA2MDc5NjAxNH0.pNBrQsyIdWrCUkdfMzn-K8BACKnwO_m0hFKB-yXgrBI';
 
 Future<void> main() async {
   await Supabase.initialize(
-      url: 'https://hbsasquyxzevcdqmhxfp.supabase.co', anonKey: supabaseKey);
+      url: 'https://yvwmcmhgzjgzdxbyzilt.supabase.co', anonKey: supabaseKey);
 
   runApp(const MyApp());
 }

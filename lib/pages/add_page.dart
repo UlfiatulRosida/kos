@@ -6,21 +6,21 @@ class AddPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Nambah Kos')),
+      appBar: AppBar(title: const Text('Identitas penghuni kos')),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
           children: [
             const TextField(
               decoration: InputDecoration(
-                labelText: 'Nama Kos',
+                labelText: 'Nama',
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 10),
             const TextField(
               decoration: InputDecoration(
-                labelText: 'Alamat Kos',
+                labelText: 'Alamat',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -35,22 +35,15 @@ class AddPage extends StatelessWidget {
             const SizedBox(height: 10),
             const TextField(
               decoration: InputDecoration(
-                labelText: 'Deskripsi',
+                labelText: 'Status',
                 border: OutlineInputBorder(),
               ),
               maxLines: 3,
             ),
             const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                // Aksi upload foto
-              },
-              child: const Text('Upload Foto'),
-            ),
-            const SizedBox(height: 10),
             const TextField(
               decoration: InputDecoration(
-                labelText: 'Jumlah kamar',
+                labelText: 'No kamar',
                 border: OutlineInputBorder(),
               ),
               keyboardType: TextInputType.number,
