@@ -6,7 +6,7 @@ class KosService {
 
   // CREATE
   static Future<void> addKos(Kos kos) async {
-    await _supabase.from('DataKos').insert({
+    await _supabase.from('Kos').insert({
       'nama': kos.nama,
       'alamat': kos.alamat,
     });
@@ -15,7 +15,7 @@ class KosService {
   // READ
   static Future<List<Kos>> getAllKos() async {
     final response = await _supabase
-        .from('DataKos')
+        .from('Kos')
         .select()
         .order('created_at', ascending: false);
 
@@ -25,12 +25,12 @@ class KosService {
   // UPDATE
   static Future<void> updateKos(Kos kos) async {
     await _supabase
-        .from('DataKos')
+        .from('Kos')
         .update({'nama': kos.nama, 'alamat': kos.alamat}).eq('id', kos.id);
   }
 
   // DELETE
   static Future<void> deleteKos(String id) async {
-    await _supabase.from('DataKos').delete().eq('id', id);
+    await _supabase.from('Kos').delete().eq('id', id);
   }
 }
